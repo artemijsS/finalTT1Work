@@ -87,6 +87,9 @@ body {
     position: relative;
     cursor: pointer;
 }
+.currency:hover span {
+    color: red;
+}
 .currency img {
     width: 10px;
     transform: rotate(180deg);
@@ -103,6 +106,11 @@ body {
 .currency:hover img {
     transform: rotate(0deg);
 }
+
+.cart a svg:hover path {
+    fill: red;
+}
+
 .menu-list {
     position: absolute;
     display: none;
@@ -124,6 +132,9 @@ body {
     padding: 0 15px;
     position: relative;
     cursor: pointer;
+}
+.language:hover span {
+    color: red;
 }
 .language img {
     width: 10px;
