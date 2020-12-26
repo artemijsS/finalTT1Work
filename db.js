@@ -1,5 +1,6 @@
 const db =
     {
+        "All": {},
         "MD": {
             "t-shirts": [
                 {
@@ -89,7 +90,7 @@ const db =
             ]
         }
     };
-const types = ["t-shirts", "hoodies"];
+const types = ["t-shirts", "hoodies", "All"];
 
 const products = [
     {
@@ -162,7 +163,7 @@ const products = [
     {
         "id": 6,
         "partners": ["ProBro", "All"],
-        "name": "Чё как брать поживает?",
+        "name": "Чё как брат поживает?",
         "types": ["Hoodies", "All"],
         "priceEUR": 42.50,
         "sale": null,

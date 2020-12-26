@@ -10,6 +10,9 @@ let actualState = {
 
 window.addEventListener('DOMContentLoaded', () => {
     const partners = Object.keys(db);
+    console.log(partners)
+
+
 
     showProducts();
 
@@ -17,6 +20,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const $filterType = $('#type');
     const $filterPartner = $('#partner');
+
+    partners.map(partner => {
+        $('#partner').append(`<option value=${partner}>${partner}</option>`);
+    })
+    types.map(type => {
+        $('#type').append(`<option value=${type}>${type}</option>`);
+    })
 
     $filterType.on('change', () => {
         actualState.filterType = $filterType.val();
@@ -70,25 +80,20 @@ window.addEventListener('DOMContentLoaded', () => {
         showProducts();
     }
 
-    // $popUpLi.click(() => {
-    //     console.log(this.id)
-    // })
-
-    // $popUp.css("display", "none");
-
     //SEARCH
     const $search = $('#product-search')
 
-    $search.on('keypress', () => {
+    $search.on('keydown', () => {
         if ($search.val().length > 1) {
             actualState.search = $search.val().toLowerCase();
             showProducts();
         }
         // console.log($search.val().length)
-        if ($search.val().length < 1) {
-
+        if ($search.val().length < actualState.search.length) {
+            console.log($search.val());
+            actualState.search = '';
+            showProducts();
         }
-        console.log(11111111)
     })
 
 
