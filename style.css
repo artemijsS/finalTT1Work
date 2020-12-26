@@ -304,6 +304,39 @@ body {
 .product-bottom .button {
     font-size: 12px;
 }
+
+/*PRODUCT CARD*/
+
+/*.holder {*/
+/*    display: block;*/
+/*    width: 90%;*/
+/*    height: 90%;*/
+/*    border-radius: 30px;*/
+/*    background-color: white;*/
+/*}*/
+
+/*.product-card {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%,-50%);*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+/*.product-card img {*/
+/*    width: 350px;*/
+/*    height: 350px;*/
+/*    object-fit: cover;*/
+/*    margin-right: 70px;*/
+/*}*/
+/*.product-card .product-info {*/
+/*    display: flex;*/
+/*    !*flex-wrap: wrap;*!*/
+/*    flex-direction: column;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+
 /*FOOTER*/
 .footer {
     height: 400px;
@@ -393,4 +426,93 @@ body {
 
 .button:focus {
     outline: none;
+}
+
+
+
+
+                                  /*d*/
+.popup {
+    display:block;
+    visibility:hidden;
+    position:fixed;
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100%;
+    background:rgba(0, 0, 0, 0.7);
+    z-index:9999;
+    overflow:hidden;
+    text-align:center;
+}
+@media(max-width: 1020px) {
+    .product-card {
+        width:30%;
+    }
+}
+@media(max-width: 800px) {
+    .product-card {
+        width:40%;
+    }
+}
+@media(max-width: 640px) {
+    .product-card {
+        width:60%;
+    }
+}
+@media(max-width: 420px) {
+    .product-card {
+        width:80%;
+    }
+}
+.p-box {
+    position:relative;
+    margin:0 auto;
+    display:block;
+    height:auto;
+    width:70%;
+    padding:20px;
+    background:white;
+}
+.product-card {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product-card img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    margin-right: 40px;
+}
+.product-card .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card .product-info .card-bottom {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.close {
+    display:inline;
+    position:absolute;
+    right:0;
+    top:5px;
+    margin-right:5px;
+    background:#E32222;
+    color:white;
+    height:20px;
+    width:20px;
+    border-radius:5px;
+    z-index:9999;
+    cursor:pointer;
+    text-align:center;
+}
+#popup_head {
+    color:#E32222;
+    text-align:center;
 }

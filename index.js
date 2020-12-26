@@ -12,21 +12,72 @@ let actualState = {
 }
 
 function productCard(id) {
+
     console.log(products[id]);
     const item = products[id];
-    const $productCard = $('#product-card');
+    const $popup = $('#popup');
     let tmp;
     tmp =
         `
-        <img src=${item.img}>
-        <h3>${item.name}</h3>
-        <h3>${item.prices[actualState.currency]}</h3>
-        `
-    $productCard.html(tmp);
+        <div class="p-box">
+            <div class="product-card" id="product-card">
+                <span class="close">X</span>
+                <img src=${item.img} alt="error">
+                <div class="product-info">
+                    <div class="name">${item.name}</div>
+                    <div class="options">
+                        <label for="size">Size:</label>
+                        <select name="size" id="size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                        <label for="color">Size:</label>
+                        <select name="color" id="color">
+                            <option value="black">black</option>
+                            <option value="white">white</option>
+                            <option value="red">red</option>
+                        </select>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price">${item.prices[actualState.currency] + " " + actualState.currencyS[actualState.currency]}</div>
+                        <button class="button">BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
+    $popup.html(tmp);
+
+    let dh = window.innerHeight;
+    let pbox_h = $(".p-box").innerHeight();
+    console.log(pbox_h)
+    let mid_scr = dh/2;
+    let mid_box = pbox_h/2;
+    let topPos = mid_scr - mid_box;
+    $(".p-box").css("top","" + topPos + "px");
+
+    $(".popup").fadeIn();
+    $(".popup").css("visibility","visible");
+
+    $(".close").click(function() {
+        $(".popup").fadeOut();
+        $popup.html('');
+        $popup.css("visibility", "")
+    });
+
 }
 
 
 window.addEventListener('DOMContentLoaded', () => {
+
+
+
+
+
+
 
     showProducts();
 
