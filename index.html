@@ -61,24 +61,24 @@
         <div class="container">
             <div class="top-filters">
                 <div class="filter">
+                    <label for="partner">Partner:</label>
+                    <select name="Partner" id="partner">
+                        <option value="All">All</option>
+                        <option value="MD">MD</option>
+                        <option value="ProBro">ProBro</option>
+                        <option value="YanaBruk">YanaBruk</option>
+                    </select>
                     <label for="type">Type:</label>
                     <select name="Type" id="type">
                         <option value="All">All</option>
                         <option value="T-shirts">T-shirts</option>
-                        <option value="Hoodie">Hoodie</option>
-                    </select>
-                    <label for="partner">Partner:</label>
-                    <select name="Partner" id="partner">
-                        <option value="">-</option>
-                        <option value="MD">MD</option>
-                        <option value="MD">ProBro</option>
-                        <option value="MD">YanaBruk</option>
+                        <option value="Hoodies">Hoodies</option>
                     </select>
                 </div>
                 <div class="search">
                     <input id="product-search" type="text" placeholder="Search..">
                 </div>
-                <div class="sort-by">
+                <div class="sort-by" id="sort-by">
                     <div class="sort-label">
                         <svg class="" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -90,92 +90,26 @@
                     </div>
                     <div class="sort-pop-up">
                             <ul>
-                                <li class="active">rating</li>
-                                <li>price (low)</li>
-                                <li>price (height)</li>
-                                <li>alphabet</li>
+                                <li id="rating" class="active">rating</li>
+                                <li id="price (low)">price (low)</li>
+                                <li id="price (height)">price (height)</li>
+                                <li id="alphabet">alphabet</li>
                             </ul>
                     </div>
                 </div>
             </div>
             <div class="products" id="products">
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
-                <div class="product-block">
-                    <div class="product-img">
-                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">
-                    </div>
-                    <h4>Sniegs?</h4>
-                    <div class="label">MD</div>
-                    <div class="product-bottom">
-                        <div class="price">30 €</div>
-                        <button class="button">buy</button>
-                    </div>
-                </div>
+<!--                <div class="product-block">-->
+<!--                    <div class="product-img">-->
+<!--                        <img src="https://merchdose.com/pictures/c34d-kosomiluku.jpg" alt="error">-->
+<!--                    </div>-->
+<!--                    <h4>Sniegs?</h4>-->
+<!--                    <div class="label">MD</div>-->
+<!--                    <div class="product-bottom">-->
+<!--                        <div class="price">30 €</div>-->
+<!--                        <button class="button">select options</button>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

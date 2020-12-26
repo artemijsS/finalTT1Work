@@ -235,7 +235,8 @@ body {
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
-    width: 200px
+    width: 200px;
+    z-index: 2;
 }
 .sort-pop-up ul {
     overflow: hidden
@@ -256,13 +257,14 @@ body {
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .product-block {
     width: 310px;
     height: 355px;
-    margin-bottom: 30px;
+    margin-bottom: 65px;
+    margin-right: 40px;
 }
 .product-block:hover {
     cursor: pointer;
@@ -296,9 +298,10 @@ body {
 }
 .product-bottom .price {
     font-size: 20px;
+    font-weight: bold;
 }
 .product-bottom .button {
-    font-size: 18px;
+    font-size: 12px;
 }
 /*FOOTER*/
 .footer {
@@ -372,7 +375,7 @@ body {
     background-color: red;
     border: none;
     color: white;
-    padding: 5px 20px;
+    padding: 5px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
