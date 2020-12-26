@@ -173,6 +173,132 @@ body {
     /*margin: auto 0;*/
 }
 
+/*CONTENT*/
+
+.content {
+    margin-bottom: 50px;
+}
+
+.top-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.search input[type=text] {
+    padding: 6px;
+    border: 1px solid black;
+    font-size: 17px;
+}
+.sort-by {
+
+}
+
+.sort {
+    position: relative;
+    /*margin-top: 15px;*/
+}
+
+.sort-label {
+    display: flex;
+    align-items: center
+}
+
+.sort-label svg {
+    margin-right: 8px;
+    transform: rotate(180deg);
+}
+
+.sort-label svg.rotated{
+    transform: rotate(0);
+}
+
+.sort-label b {
+    margin-right: 8px
+}
+
+.sort-label span {
+    color: red;
+    border-bottom: 1px dashed red;
+    cursor: pointer
+}
+
+.sort-pop-up {
+    position: absolute;
+    /*right: 0;*/
+    margin-top: 15px;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    width: 200px
+}
+.sort-pop-up ul {
+    overflow: hidden
+}
+.sort-pop-up ul li {
+    padding: 12px 20px;
+    cursor: pointer
+}
+.sort-pop-up ul li.active,
+.sort-pop-up ul li:hover {
+    background: rgba(255, 12, 0, 0.05)
+}
+.sort-pop-up ul li.active {
+    font-weight: bold;
+    color: red;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-block {
+    width: 310px;
+    height: 355px;
+    margin-bottom: 30px;
+}
+.product-block:hover {
+    cursor: pointer;
+}
+.product-img {
+    text-align: center;
+}
+.product-img img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+.product-img img:hover {
+    opacity: 30%;
+}
+.product-block h4 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.product-block .label {
+    color: gray;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.product-bottom {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.product-bottom .price {
+    font-size: 20px;
+}
+.product-bottom .button {
+    font-size: 18px;
+}
 /*FOOTER*/
 .footer {
     height: 400px;
