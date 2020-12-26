@@ -281,11 +281,11 @@ body {
     opacity: 30%;
 }
 .product-block h4 {
-    font-size: 18px;
+    font-size: 23px;
     margin: 10px 0;
 }
 .product-block .label {
-    color: black;
+    color: red;
     font-weight: bold;
     font-size: 15px;
     margin: 5px 0;

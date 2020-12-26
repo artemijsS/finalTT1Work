@@ -1,20 +1,50 @@
 let actualState = {
     language: "EN",
     currency: "EUR",
+    currencyS: {
+        "EUR": "€",
+        "RUB": "₽"
+    },
     filterType: "All",
     filterPartner: "All",
     sortBy: "rating",
     search: ""
 }
 
+function productCard(id) {
+    console.log(products[id]);
+    const item = products[id];
+    const $productCard = $('#product-card');
+    let tmp;
+    tmp =
+        `
+        <img src=${item.img}>
+        <h3>${item.name}</h3>
+        <h3>${item.prices[actualState.currency]}</h3>
+        `
+    $productCard.html(tmp);
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
-    const partners = Object.keys(db);
-    console.log(partners)
-
-
 
     showProducts();
+
+
+    //HEADER
+    const $currencyLi = $('#currency li');
+    const $currencySpan = $('#currency Span');
+
+    $currencyLi.on('click', () => {
+        actualState.currency = $currencyLi.attr('id');
+        $currencyLi.html($currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
+        $currencySpan.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
+        $currencyLi.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
+
+        console.log(actualState.currency)
+        showProducts();
+    })
+
 
     //FILTERS
 
@@ -99,7 +129,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function showProducts() {
         const $products = $('#products');
-        $products.html('test');
 
         let items = [];
         let productCards = '';
@@ -125,7 +154,52 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-        console.log(items)
+        function sortDy(property,order) {
+            var sort_order = 1;
+            if(order === "desc"){
+                sort_order = -1;
+            }
+            return function (a, b){
+                // a should come before b in the sorted order
+                if(a[property] < b[property]){
+                    return -1 * sort_order;
+                    // a should come after b in the sorted order
+                }else if(a[property] > b[property]){
+                    return 1;
+                    // a and b are the same
+                }else{
+                    return 0;
+                }
+            }
+        }
+        function sortDyPrice(property,order) {
+            var sort_order = 1;
+            if(order === "desc"){
+                sort_order = -1;
+            }
+            return function (a, b){
+                // a should come before b in the sorted order
+                if(a.prices[property] < b.prices[property]){
+                    return -1 * sort_order;
+                    // a should come after b in the sorted order
+                }else if(a.prices[property] > b.prices[property]){
+                    return sort_order;
+                    // a and b are the same
+                }else{
+                    return 0;
+                }
+            }
+        }
+
+        if (actualState.sortBy === "alphabet")
+            items.sort(sortDy("name", "asc"));
+        if (actualState.sortBy === "rating")
+            items.sort(sortDy("rating", "desc"))
+        if (actualState.sortBy === "price (low)")
+            items.sort(sortDyPrice(`${actualState.currency}`, "asc"))
+        if (actualState.sortBy === "price (height)")
+            items.sort(sortDyPrice(`${actualState.currency}`, "desc"))
+
 
         items.map(obj => {
             productCards +=
@@ -136,11 +210,13 @@ window.addEventListener('DOMContentLoaded', () => {
                     <h4>${obj.name}</h4>
                     <div class="label">${obj.partners[0]}</div>
                     <div class="product-bottom">
-                        <div class="price">${actualState.currency === "EUR" ? obj.priceEUR : "--"} €</div>
-                        <button class="button">select options</button>
+                        <div class="price">${obj.prices[actualState.currency] + " " + actualState.currencyS[actualState.currency]}</div>
+                        <button id=${obj.id} onclick="productCard(this.id)" class="button">select options</button>
                     </div>
                 </div>`
         })
+
+        // productCards.sort("rating");
 
         $products.html(productCards);
     }
