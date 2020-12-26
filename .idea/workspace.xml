@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57103889-aab7-4331-aafc-bb93702c77a4" name="Default Changelist" comment="25/12/2020">
-      <change afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    <list default="true" id="57103889-aab7-4331-aafc-bb93702c77a4" name="Default Changelist" comment="26/12/2020">
+      <change afterPath="$PROJECT_DIR$/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +58,7 @@
       <workItem from="1608922785417" duration="9446000" />
       <workItem from="1608960336206" duration="1699000" />
       <workItem from="1608962305996" duration="2620000" />
-      <workItem from="1608975230772" duration="3720000" />
+      <workItem from="1608975230772" duration="4961000" />
     </task>
     <task id="LOCAL-00001" summary="25/12/2020">
       <created>1608932797112</created>
@@ -80,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608933624134</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="26/12/2020">
+      <created>1608979092906</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608979092906</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="25/12/2020" />
-    <option name="LAST_COMMIT_MESSAGE" value="25/12/2020" />
+    <MESSAGE value="26/12/2020" />
+    <option name="LAST_COMMIT_MESSAGE" value="26/12/2020" />
   </component>
 </project>

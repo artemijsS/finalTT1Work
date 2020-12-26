@@ -227,6 +227,7 @@ body {
 
 .sort-pop-up {
     position: absolute;
+    display: none;
     /*right: 0;*/
     margin-top: 15px;
     background: #ffffff;
