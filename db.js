@@ -10,7 +10,7 @@ const products = [
         "types": ["T-shirts", "All"],
         "prices": {
             "EUR": 12.00,
-            "RUB": 1900
+            "RUB": 1080
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-kosomiluku.jpg",

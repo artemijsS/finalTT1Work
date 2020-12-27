@@ -446,22 +446,22 @@ body {
     text-align:center;
 }
 @media(max-width: 1020px) {
-    .product-card {
+    .p-box {
         width:30%;
     }
 }
 @media(max-width: 800px) {
-    .product-card {
+    .p-box {
         width:40%;
     }
 }
 @media(max-width: 640px) {
-    .product-card {
+    .p-box {
         width:60%;
     }
 }
 @media(max-width: 420px) {
-    .product-card {
+    .p-box {
         width:80%;
     }
 }
@@ -508,7 +508,7 @@ body {
     margin-bottom: 40px;
 }
 .product-info .options select {
-    margin-right: 30px;
+    margin-right: 35px;
 }
 .product-info .options label {
     font-weight: bold;

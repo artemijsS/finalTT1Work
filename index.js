@@ -10,8 +10,9 @@ let actualState = {
     sortBy: "rating",
     search: "",
     cart: {
-        items: [],
-        totalPrice: 0,
+        items: {},
+        totalPriceEUR: 0,
+        totalPriceRUB: 0,
         totalCount: 0
     }
 }
@@ -62,7 +63,6 @@ function productCard(id) {
     $productBox.html(tmp);
     let dh = window.innerHeight;
     let pbox_h = $("#popup").innerHeight();
-    console.log(pbox_h)
     let mid_scr = dh/2;
     let mid_box = pbox_h/2;
     let topPos = mid_scr - mid_box;
@@ -83,6 +83,7 @@ function productCard(id) {
 
 
     $btnToCart.on('click', () => {
+        // validation
         if (!$size.val() && !$color.val()) {
             $size.css('border', '1px solid red');
             $color.css('border', '1px solid red');
@@ -106,10 +107,58 @@ function productCard(id) {
             $color.css('border', '');
         }
 
-        console.log(item, $size.val(), $color.val())
-        actualState.cart.items.push(item)
-    })
+        const cartItem = {
+            id: item.id,
+            name: item.name,
+            img: item.img,
+            priceEUR: item.prices.EUR,
+            priceRUB: item.prices.RUB,
+            size: $size.val(),
+            color: $color.val()
+        }
 
+        if (!actualState.cart.items[cartItem.id]) {
+            actualState.cart.items[cartItem.id] = {
+                [cartItem.size]: {
+                    [cartItem.color]: {
+                        id: cartItem,
+                        totalItemCount: 1
+                    }
+                }
+            }
+        }
+        else {
+            if (!actualState.cart.items[cartItem.id][cartItem.size]) {
+                actualState.cart.items[cartItem.id][cartItem.size] = {
+                    [cartItem.color]: {
+                        id: cartItem,
+                        totalItemCount: 1
+                    }
+                }
+            }
+            else {
+                if (!actualState.cart.items[cartItem.id][cartItem.size][cartItem.color]) {
+                    actualState.cart.items[cartItem.id][cartItem.size][cartItem.color] = {
+                        id: cartItem,
+                        totalItemCount: 1
+                    }
+                }
+                else {
+                    actualState.cart.items[cartItem.id][cartItem.size][cartItem.color].totalItemCount += 1;
+                }
+            }
+        }
+
+        // actualState.cart.items.push(cartItem)
+        actualState.cart.totalCount += 1;
+        actualState.cart.totalPriceEUR += cartItem.priceEUR;
+        actualState.cart.totalPriceRUB += cartItem.priceRUB;
+        console.log(actualState.cart)
+
+        $(".popup").fadeOut();
+        $productBox.html('');
+        $(".popup").css("visibility", "");
+    })
 }
 
 
@@ -119,7 +168,7 @@ window.addEventListener('DOMContentLoaded', () => {
     showProducts();
 
 
-    //HEADER
+    //HEADER currency toggle
     const $currencyLi = $('#currency li');
     const $currencySpan = $('#currency Span');
 
@@ -159,7 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const $sortBySpan = $('#sort-by span');
     const $popUp = $('.sort-pop-up');
-    const $popUpLiActive = $('.sort-pop-up ul li');
+    const $popUpLi = $('.sort-pop-up ul li');
     const sortBy = document.getElementById('sort-by');
 
     document.getElementById('rating').onclick = setSortBy;
@@ -193,7 +242,7 @@ window.addEventListener('DOMContentLoaded', () => {
         actualState.sortBy = this.id;
         popUpToggle();
         $sortBySpan.html(this.id)
-        $popUpLiActive.removeClass();
+        $popUpLi.removeClass();
         document.getElementById(this.id).classList.add("active");
         showProducts();
     }
@@ -214,7 +263,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-
+    //PRODUCTS filtration, sorting and output
     function showProducts() {
         const $products = $('#products');
 
