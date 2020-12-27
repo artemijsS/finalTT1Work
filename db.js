@@ -14,7 +14,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-kosomiluku.jpg",
-        "description": "lorem ipsum",
+        "description": "On the front of the product, printed \"Sniegs? Nē, nedzirdēju\", membrane. This print can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 product color options: black (white print), red (white print) and white (red print).",
         "rating": 80
     },
     {
@@ -28,7 +28,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-tyvyfosuranaruhakyro.jpg",
-        "description": "lorem ipsum",
+        "description": "On the front of the product, printed \"coronavirus\", membrane. On the back of the product, printed \"Baby it’s covid outside\", membrane. These prints can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 color options for the product: black, white and red.",
         "rating": 50
     },
     {
@@ -42,7 +42,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-dopecomijevehyjomaho.jpg",
-        "description": "lorem ipsum",
+        "description": "On the front of the product, printed \"2021\", membrane. This print can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. On the back of the product, printed, direct printing. This print can withstand 30 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 product color options: black, red and white.",
         "rating": 40
     },
     {
@@ -56,7 +56,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-mocaforafitejomumyfy.jpg",
-        "description": "lorem ipsum",
+        "description": "On the front of the product, printed \"2021\", membrane. On the back of the product, printed with membrane. These prints can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 product color options: black (white print), red (white print) and white (red print).",
         "rating": 45
     },
     {
@@ -71,7 +71,7 @@ const products = [
         "sale": "10%",
         "finalPriceEUR": 38.70,
         "img": "https://merchdose.com/pictures/c34d-betapubigu.jpg",
-        "description": "lorem ipsum",
+        "description": "Unisex hoodie, on the front, printed snowflake, with reflective membrane. This print can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. And also there is a patch \"2021\". Note: product photos are computer-generated visualizations.",
         "rating": 65
     },
     {
@@ -85,7 +85,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-dyforesili.jpg",
-        "description": "lorem ipsum",
+        "description": "These prints can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 product color options: black (white print), red (white print) and white (red print).\",",
         "rating": 49
     },
     {
@@ -99,7 +99,7 @@ const products = [
         },
         "sale": null,
         "img": "https://merchdose.com/pictures/c34d-rubycogoso.jpg",
-        "description": "lorem ipsum",
+        "description": "These prints can withstand 40 washes, provided that the product is washed at a temperature no higher than 30 degrees and do not use a dryer. There are 3 product color options: black (white print), red (white print) and white (red print).\",",
         "rating": 50
     }
 ]

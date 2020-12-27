@@ -8,33 +8,42 @@ let actualState = {
     filterType: "All",
     filterPartner: "All",
     sortBy: "rating",
-    search: ""
+    search: "",
+    cart: {
+        items: [],
+        totalPrice: 0,
+        totalCount: 0
+    }
 }
 
 function productCard(id) {
 
-    console.log(products[id]);
     const item = products[id];
-    const $popup = $('#popup');
+    const $productBox = $('#productBox');
     let tmp;
+    // language=HTML
     tmp =
         `
+    <div id="popup" class="popup">
         <div class="p-box">
             <div class="product-card" id="product-card">
                 <span class="close">X</span>
                 <img src=${item.img} alt="error">
                 <div class="product-info">
                     <div class="name">${item.name}</div>
+                    <div class="description">${item.description}</div>
                     <div class="options">
                         <label for="size">Size:</label>
                         <select name="size" id="size">
+                            <option value="">-</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                             <option value="XL">XL</option>
                         </select>
-                        <label for="color">Size:</label>
+                        <label for="color">Color:</label>
                         <select name="color" id="color">
+                            <option value="">-</option>
                             <option value="black">black</option>
                             <option value="white">white</option>
                             <option value="red">red</option>
@@ -42,17 +51,17 @@ function productCard(id) {
                     </div>
                     <div class="card-bottom">
                         <div class="price">${item.prices[actualState.currency] + " " + actualState.currencyS[actualState.currency]}</div>
-                        <button class="button">BUY</button>
+                        <button id="addToCart" class="button">BUY</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         `;
 
-    $popup.html(tmp);
-
+    $productBox.html(tmp);
     let dh = window.innerHeight;
-    let pbox_h = $(".p-box").innerHeight();
+    let pbox_h = $("#popup").innerHeight();
     console.log(pbox_h)
     let mid_scr = dh/2;
     let mid_box = pbox_h/2;
@@ -64,19 +73,47 @@ function productCard(id) {
 
     $(".close").click(function() {
         $(".popup").fadeOut();
-        $popup.html('');
-        $popup.css("visibility", "")
+        $productBox.html('');
+        $(".popup").css("visibility", "")
     });
+
+    const $btnToCart = $('#addToCart');
+    const $size = $('#size');
+    const $color = $('#color');
+
+
+    $btnToCart.on('click', () => {
+        if (!$size.val() && !$color.val()) {
+            $size.css('border', '1px solid red');
+            $color.css('border', '1px solid red');
+            alert('You should choose size and color');
+            return false;
+        }
+        else if (!$size.val()) {
+            alert('You should choose size');
+            $color.css('border', '');
+            $size.css('border', '1px solid red');
+            return false;
+        }
+        else if (!$color.val()) {
+            alert('You should choose color');
+            $size.css('border', '');
+            $color.css('border', '1px solid red');
+            return false;
+        }
+        else {
+            $size.css('border', '');
+            $color.css('border', '');
+        }
+
+        console.log(item, $size.val(), $color.val())
+        actualState.cart.items.push(item)
+    })
 
 }
 
 
 window.addEventListener('DOMContentLoaded', () => {
-
-
-
-
-
 
 
     showProducts();
@@ -206,36 +243,30 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         function sortDy(property,order) {
-            var sort_order = 1;
+            let sort_order = 1;
             if(order === "desc"){
                 sort_order = -1;
             }
             return function (a, b){
-                // a should come before b in the sorted order
                 if(a[property] < b[property]){
                     return -1 * sort_order;
-                    // a should come after b in the sorted order
                 }else if(a[property] > b[property]){
-                    return 1;
-                    // a and b are the same
+                    return sort_order;
                 }else{
                     return 0;
                 }
             }
         }
         function sortDyPrice(property,order) {
-            var sort_order = 1;
+            let sort_order = 1;
             if(order === "desc"){
                 sort_order = -1;
             }
             return function (a, b){
-                // a should come before b in the sorted order
                 if(a.prices[property] < b.prices[property]){
                     return -1 * sort_order;
-                    // a should come after b in the sorted order
                 }else if(a.prices[property] > b.prices[property]){
                     return sort_order;
-                    // a and b are the same
                 }else{
                     return 0;
                 }
@@ -266,8 +297,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>`
         })
-
-        // productCards.sort("rating");
 
         $products.html(productCards);
     }
