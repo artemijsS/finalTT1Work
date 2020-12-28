@@ -22,6 +22,8 @@ function productCard(id) {
     const item = products[id];
     const $productBox = $('#productBox');
     let tmp;
+    let sizeOptions;
+    let colorOptions;
     // language=HTML
     tmp =
         `
@@ -29,7 +31,7 @@ function productCard(id) {
         <div class="p-box">
             <div class="product-card" id="product-card">
                 <span class="close">X</span>
-                <img src=${item.img} alt="error">
+                <img id="product-card-img" src=${item.img} alt="error">
                 <div class="product-info">
                     <div class="name">${item.name}</div>
                     <div class="description">${item.description}</div>
@@ -37,17 +39,18 @@ function productCard(id) {
                         <label for="size">Size:</label>
                         <select name="size" id="size">
                             <option value="">-</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
+                            ${item.sizes.map(size => {
+                                sizeOptions += `<option value=${size}>${size}</option>`
+                            })}
+                            ${sizeOptions}
                         </select>
                         <label for="color">Color:</label>
                         <select name="color" id="color">
                             <option value="">-</option>
-                            <option value="black">black</option>
-                            <option value="white">white</option>
-                            <option value="red">red</option>
+                            ${item.colors.map(color => {
+                                colorOptions += `<option value=${color}>${color}</option>`
+                            })}
+                            ${colorOptions}
                         </select>
                     </div>
                     <div class="card-bottom">
@@ -77,10 +80,19 @@ function productCard(id) {
         $(".popup").css("visibility", "")
     });
 
+
+
     const $btnToCart = $('#addToCart');
     const $size = $('#size');
     const $color = $('#color');
 
+    $color.on('change', () => {
+        if (!$color.val()) {
+            $('#product-card-img').attr('src', item.img);
+            return false;
+        }
+        $('#product-card-img').attr('src', item.images[$color.val()]);
+    })
 
     $btnToCart.on('click', () => {
         // validation
