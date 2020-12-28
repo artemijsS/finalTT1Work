@@ -428,10 +428,30 @@ body {
     outline: none;
 }
 
+.button-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    border: 1px solid red;
+    background-color: white;
+    /*padding: 16px;*/
+    padding: 5px 13px;
+    margin: 0 10px;
+}
+.button-circle:hover {
+    background-color: red;
+}
+.button-circle:hover svg path {
+    fill: white;
+}
+.button-circle:active {
+    border: 1px solid black;
+}
 
 
 
-                                  /*d*/
+
+                                  /*boxes*/
 .popup {
     display:block;
     visibility:hidden;
@@ -502,6 +522,7 @@ body {
 .product-info .description {
     margin-bottom: 40px;
     font-size: 13px;
+    line-height: 1.5em;
     color: gray;
 }
 .product-info .options {
@@ -545,4 +566,112 @@ body {
 #popup_head {
     color:#E32222;
     text-align:center;
+}
+
+
+/*CART*/
+.popup-cart-box {
+    display:block;
+    visibility:hidden;
+    position:fixed;
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100%;
+    background:rgba(0, 0, 0, 0.7);
+    z-index:9999;
+    overflow:hidden;
+    text-align:center;
+}
+
+.cart-box {
+    position:relative;
+    margin:0 auto;
+    height: 600px;
+    width:70%;
+    padding:20px;
+    background:white;
+    overflow: auto;
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-head {
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 3px solid red;
+}
+
+.cart-items {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cart-item {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+.cart-item-img {
+    margin-right: 50px;
+}
+.cart-item-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+.cart-item .name-params {
+
+}
+.cart-item .name-params .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+.cart-item .name-params .params {
+    font-size: 14px;
+}
+.cart-item .quantity-price {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.cart-item .total-item-price {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 50px;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-footer {
+    width: 100%;
+    padding-top: 50px;
+    border-top: 3px solid red;
+}
+.cart-footer .totalCount {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.cart-footer .totalPrice {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.cart-footer .button {
+    font-size: 20px;
 }
