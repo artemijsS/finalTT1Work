@@ -162,6 +162,8 @@ function productCard(id) {
                 }
                 else {
                     actualState.cart.items[cartItem.id][cartItem.size][cartItem.color].totalItemCount += 1;
+                    actualState.cart.items[cartItem.id][cartItem.size][cartItem.color].id.prices.EUR += cartItem.prices.EUR;
+                    actualState.cart.items[cartItem.id][cartItem.size][cartItem.color].id.prices.RUB += cartItem.prices.RUB;
                 }
             }
         }
@@ -184,16 +186,62 @@ function productCard(id) {
     })
 }
 
+function addItemCount(id) {
+    const item = id.split('/');
+    const itemId = item[1];
+    const itemSize = item[2];
+    const itemColor = item[3];
+    actualState.cart.items[itemId][itemSize][itemColor].totalItemCount += 1;
+    actualState.cart.items[itemId][itemSize][itemColor].id.prices.EUR += products[itemId].prices.EUR;
+    actualState.cart.items[itemId][itemSize][itemColor].id.prices.RUB += products[itemId].prices.RUB;
+    actualState.cart.totalCount += 1;
+    actualState.cart.totalPrices.EUR += products[itemId].prices.EUR;
+    actualState.cart.totalPrices.RUB += products[itemId].prices.RUB;
 
+    let countOf =  '#count-of-' + itemId + itemSize + itemColor;
+    let priceOf =  '#price-of-' + itemId + itemSize + itemColor;
+    $(countOf).html(actualState.cart.items[itemId][itemSize][itemColor].totalItemCount);
+    $(priceOf).html(actualState.cart.items[itemId][itemSize][itemColor].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
+    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
+    $('#cart span').html(actualState.cart.totalCount);
+}
+
+function minusItemCount(id) {
+    const item = id.split('/');
+    const itemId = item[1];
+    const itemSize = item[2];
+    const itemColor = item[3];
+    if (actualState.cart.items[itemId][itemSize][itemColor].totalItemCount === 1) {
+        return false;
+    }
+    actualState.cart.items[itemId][itemSize][itemColor].totalItemCount -= 1;
+    actualState.cart.items[itemId][itemSize][itemColor].id.prices.EUR -= products[itemId].prices.EUR;
+    actualState.cart.items[itemId][itemSize][itemColor].id.prices.RUB -= products[itemId].prices.RUB;
+    actualState.cart.totalCount -= 1;
+    actualState.cart.totalPrices.EUR -= products[itemId].prices.EUR;
+    actualState.cart.totalPrices.RUB -= products[itemId].prices.RUB;
+
+    let countOf =  '#count-of-' + itemId + itemSize + itemColor;
+    let priceOf =  '#price-of-' + itemId + itemSize + itemColor;
+    $(countOf).html(actualState.cart.items[itemId][itemSize][itemColor].totalItemCount);
+    $(priceOf).html(actualState.cart.items[itemId][itemSize][itemColor].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
+    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
+    $('#cart span').html(actualState.cart.totalCount);
+}
+// TODO: сделать кнопку удалить товар, сделать пустую корзину
 //CART BOX
 function cartBox () {
 
     let tmp;
+    let testt;
     let cartItems = '';
     Object.keys(actualState.cart.items).map(id => {
         Object.keys(actualState.cart.items[id]).map(size => {
             Object.keys(actualState.cart.items[id][size]).map(color => {
                 console.log(actualState.cart.items[id][size][color])
+                testt = size;
                 cartItems +=
                     `
                     <div class="cart-item">
@@ -206,7 +254,7 @@ function cartBox () {
                         </div>
                         <div class="quantity-price">
                             <div class="quantity">
-                                <div class="button button-circle">
+                                <div id=${"count-minus-" + '/' + id + '/' + size + '/' + color} class="button button-circle" onclick="minusItemCount(this.id)">
                                     <svg width="13" height="13" viewBox="0 0 10 10" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -214,8 +262,8 @@ function cartBox () {
                                                 fill="red"/>
                                     </svg>
                                 </div>
-                                <b>${actualState.cart.items[id][size][color].totalItemCount}</b>
-                                <div class="button button-circle">
+                                <b id=${"count-of-" + id + size + color}>${actualState.cart.items[id][size][color].totalItemCount}</b>
+                                <div id=${"count-add-" + '/' + id + '/' + size + '/' + color} class="button button-circle" onclick="addItemCount(this.id)">
                                     <svg width="13" height="13" viewBox="0 0 10 10" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -227,7 +275,7 @@ function cartBox () {
                                     </svg>
                                 </div>
                             </div>
-                            <div class="total-item-price">${actualState.cart.items[id][size][color].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
+                            <div id=${"price-of-" + id + size + color} class="total-item-price">${actualState.cart.items[id][size][color].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
                         </div>
                     </div>
                     `
@@ -245,8 +293,8 @@ function cartBox () {
                         ${cartItems}
                     </div>
                     <div class="cart-footer">
-                        <div class="totalCount">Quantity: ${actualState.cart.totalCount}</div>
-                        <div class="totalPrice">${actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
+                        <div id="totalCount" class="totalCount">Quantity: ${actualState.cart.totalCount}</div>
+                        <div id="totalPrice" class="totalPrice">${actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
                         <button class="button">BUY</button>
                     </div>
                 </div>
@@ -372,6 +420,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    // TODO: сделать элемент под пустую фильтрацию
     //PRODUCTS filtration, sorting and output
     function showProducts() {
         const $products = $('#products');
