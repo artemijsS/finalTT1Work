@@ -175,6 +175,12 @@ function productCard(id) {
         $(".popup").fadeOut();
         $productBox.html('');
         $(".popup").css("visibility", "");
+
+        $('#cart span').html(actualState.cart.totalCount);
+
+        $("#notificationBox").fadeIn();
+        $('#notificationBox').css("visibility", "visible");
+        setTimeout(() => { $('#notificationBox').css("visibility", "") }, 3000);
     })
 }
 
@@ -182,9 +188,6 @@ function productCard(id) {
 //CART BOX
 function cartBox () {
 
-
-
-    console.log(actualState.cart);
     let tmp;
     let cartItems = '';
     Object.keys(actualState.cart.items).map(id => {

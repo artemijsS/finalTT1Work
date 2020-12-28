@@ -127,6 +127,13 @@ body {
 .cart {
     padding: 0 15px;
 }
+.cart span {
+    color: white;
+    border-radius: 10px;
+    border: 1px solid red;
+    background-color: red;
+    padding: 3px 5px;
+}
 
 .language {
     padding: 0 15px;
@@ -674,4 +681,24 @@ body {
 }
 .cart-footer .button {
     font-size: 20px;
+}
+
+
+/*NOTIFICATION item added to cart*/
+
+.notification-box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    right: 0;
+    width: 200px;
+    height: 70px;
+    background-color: red;
+    z-index: 100;
+}
+.notification {
+    width: 100%;
+    margin: 26px 0;
+    text-align: center;
+    color: white;
 }
