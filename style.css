@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
+/*TODO сделать адаптацию под планшеты и телефоны*/
 * {
     margin: 0;
     padding: 0;
@@ -160,6 +160,68 @@ body {
     transform: rotate(0deg);
 }
 
+
+#menu {
+    display: none;
+    background-color: transparent;
+    width: 35px;
+    height: 30px;
+    margin: auto 0;
+    cursor: pointer;
+}
+.bar {
+    height: 5px;
+    width: 100%;
+    background-color: black;
+    display: block;
+}
+#bar1 {
+    transform: translateY(-4px);
+}
+#bar3 {
+    transform: translateY(4px);
+}
+
+@media only screen and (max-width: 1408px) {
+    #menu {
+        display: block;
+    }
+    .nav .cart-menu {
+        border: none;
+    }
+    .nav .navigation,
+    .nav .cart-menu .currency,
+    .nav .cart-menu .language
+    {
+        display: none;
+    }
+
+    .header-top {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+    .nav {
+        width: auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .header .container {
+        padding-top: 20px;
+    }
+    .header-top .logo .logo {
+        height: 50%;
+    }
+    .logo-burger {
+        margin-right: 20px;
+    }
+    .header-top .logo-burger .logo img {
+        width: 150px;
+    }
+}
+
 /*BANNER*/
 .banner {
     background-image: url("images/OnWebPhoto.jpg");
@@ -199,13 +261,9 @@ body {
     border: 1px solid black;
     font-size: 17px;
 }
-.sort-by {
-
-}
 
 .sort {
     position: relative;
-    /*margin-top: 15px;*/
 }
 
 .sort-label {
@@ -259,6 +317,14 @@ body {
 .sort-pop-up ul li.active {
     font-weight: bold;
     color: red;
+}
+
+/*MEDIA filtration*/
+@media only screen and (max-width: 1408px) {
+
+}
+@media only screen and (max-width: 600px) {
+
 }
 
 .products {
@@ -378,6 +444,14 @@ body {
     object-fit: cover;
 }
 
+@media only screen and (max-width: 1144px) {
+    .links {
+        display: none;
+    }
+    .payments {
+        display: none;
+    }
+}
 
 
 /*BUTTON*/
@@ -484,10 +558,11 @@ body {
     position:relative;
     margin:0 auto;
     display:block;
-    height:auto;
+    height:600px;
     width:70%;
     padding:20px;
     background:white;
+    overflow: auto;
 }
 .product-card {
     margin: 0 auto;
@@ -577,6 +652,10 @@ body {
     z-index:9999;
     overflow:hidden;
     text-align:center;
+}
+
+.cart-empty {
+    margin: 100px auto;
 }
 
 .cart-box {

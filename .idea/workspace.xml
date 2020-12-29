@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="57103889-aab7-4331-aafc-bb93702c77a4" name="Default Changelist" comment="29/12/2020">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -65,7 +66,8 @@
       <workItem from="1609106739670" duration="5395000" />
       <workItem from="1609148929961" duration="14987000" />
       <workItem from="1609178976700" duration="9609000" />
-      <workItem from="1609233510317" duration="5201000" />
+      <workItem from="1609233510317" duration="5230000" />
+      <workItem from="1609247645246" duration="7128000" />
     </task>
     <task id="LOCAL-00001" summary="25/12/2020">
       <created>1608932797112</created>
@@ -172,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609193708122</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="29/12/2020">
+      <created>1609241260526</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1609241260526</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,17 +205,5 @@
     <MESSAGE value="28/12/2020" />
     <MESSAGE value="29/12/2020" />
     <option name="LAST_COMMIT_MESSAGE" value="29/12/2020" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/index.js</url>
-          <line>272</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

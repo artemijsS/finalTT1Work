@@ -202,7 +202,7 @@ function addItemCount(id) {
     let priceOf =  '#price-of-' + itemId + itemSize + itemColor;
     $(countOf).html(actualState.cart.items[itemId][itemSize][itemColor].totalItemCount);
     $(priceOf).html(actualState.cart.items[itemId][itemSize][itemColor].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
-    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalCount').html('Quantity: ' + actualState.cart.totalCount);
     $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
     $('#cart span').html(actualState.cart.totalCount);
 }
@@ -226,7 +226,7 @@ function minusItemCount(id) {
     let priceOf =  '#price-of-' + itemId + itemSize + itemColor;
     $(countOf).html(actualState.cart.items[itemId][itemSize][itemColor].totalItemCount);
     $(priceOf).html(actualState.cart.items[itemId][itemSize][itemColor].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
-    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalCount').html('Quantity: ' + actualState.cart.totalCount);
     $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
     $('#cart span').html(actualState.cart.totalCount);
 }
@@ -256,28 +256,43 @@ function deleteItemFromCart(id) {
         delete actualState.cart.items[itemId][itemSize][itemColor];
     }
 
-    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalCount').html('Quantity: ' + actualState.cart.totalCount);
     $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
     $('#cart span').html(actualState.cart.totalCount);
     cartBox();
 }
 
-// TODO: сделать пустую корзину
+
 //CART BOX
 function cartBox () {
     console.log(actualState.cart)
     let tmp;
     let cartItems = '';
+    let cartFooter;
 
     if (actualState.cart.totalCount === 0) {
-        console.log('test')
+        cartItems = '<div class="cart-empty">EMPTY</div>';
+        cartFooter =
+            `
+            <div class="cart-footer">
+                <button 
+                    onclick="
+                        $('.popup-cart-box').fadeOut();
+                        $('#cartBox').html('');
+                        $('.popup-cart-box').css('visibility', '')" 
+                    class="button"
+                >
+                    to catalogue
+                </button>
+            </div>
+            `
     }
-
-    Object.keys(actualState.cart.items).map(id => {
-        Object.keys(actualState.cart.items[id]).map(size => {
-            Object.keys(actualState.cart.items[id][size]).map(color => {
-                cartItems +=
-                    `
+    else {
+        Object.keys(actualState.cart.items).map(id => {
+            Object.keys(actualState.cart.items[id]).map(size => {
+                Object.keys(actualState.cart.items[id][size]).map(color => {
+                    cartItems +=
+                        `
                     <div class="cart-item">
                         <div class="cart-item-img">
                             <img src=${actualState.cart.items[id][size][color].id.img} alt="error">
@@ -323,9 +338,18 @@ function cartBox () {
                         </div>
                     </div>
                     `
+                })
             })
         })
-    })
+        cartFooter =
+            `
+            <div class="cart-footer">
+                <div id="totalCount" class="totalCount">${'Quantity: ' + actualState.cart.totalCount}</div>
+                <div id="totalPrice" class="totalPrice">${actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
+                <button class="button">BUY</button>
+            </div>
+            `
+    }
     // language=HTML
     tmp =
         `
@@ -336,11 +360,7 @@ function cartBox () {
                     <div class="cart-items">
                         ${cartItems}
                     </div>
-                    <div class="cart-footer">
-                        <div id="totalCount" class="totalCount">Quantity: ${actualState.cart.totalCount}</div>
-                        <div id="totalPrice" class="totalPrice">${actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
-                        <button class="button">BUY</button>
-                    </div>
+                    ${cartFooter}
                 </div>
             </div>
         `
