@@ -397,7 +397,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const $currencySpan = $('#currency Span');
 
     $currencyLi.on('click', () => {
-        actualState.currency = $currencyLi.attr('id')[0] === 'R' ? 'RUB' : EUR;
+        actualState.currency = $currencyLi.attr('id')[0] === 'R' ? 'RUB' : 'EUR';
         $currencyLi.html($currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
         $currencySpan.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
         $currencyLi.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
@@ -421,10 +421,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const $currency2Span = $('#currency2 Span');
 
     $currency2Li.on('click', () => {
-        actualState.currency = $currencyLi.attr('id');
-        $currency2Li.html($currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
-        $currency2Span.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
-        $currency2Li.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
+        actualState.currency = $currency2Li.attr('id')[0] === 'R' ? 'RUB' : 'EUR';
+        $currency2Li.html($currency2Li.attr('id')[0] === 'R' ? 'EUR' : 'RUB');
+        $currency2Span.html($currency2Li.attr('id')[0] === 'R' ? 'RUB' : 'EUR');
+        $currency2Li.attr('id', $currency2Li.attr('id')[0] === 'R' ? 'EUR' : 'RUB');
 
         showProducts();
     })
