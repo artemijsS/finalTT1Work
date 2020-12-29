@@ -230,18 +230,52 @@ function minusItemCount(id) {
     $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
     $('#cart span').html(actualState.cart.totalCount);
 }
-// TODO: сделать кнопку удалить товар, сделать пустую корзину
+
+function deleteItemFromCart(id) {
+    const item = id.split('/');
+    const itemId = item[1];
+    const itemSize = item[2];
+    const itemColor = item[3];
+    // console.log(actualState.cart.items[itemId][itemSize][itemColor])
+
+    // console.log(actualState.cart.items[itemId][itemSize])
+
+    actualState.cart.totalCount -= actualState.cart.items[itemId][itemSize][itemColor].totalItemCount;
+    actualState.cart.totalPrices.EUR -= actualState.cart.items[itemId][itemSize][itemColor].id.prices.EUR;
+    actualState.cart.totalPrices.RUB -= actualState.cart.items[itemId][itemSize][itemColor].id.prices.RUB;
+
+    if (Object.keys(actualState.cart.items[itemId][itemSize]).length === 1) {
+        if (Object.keys(actualState.cart.items[itemId]).length === 1) {
+            delete actualState.cart.items[itemId];
+        }
+        else {
+            delete actualState.cart.items[itemId][itemSize];
+        }
+    }
+    else {
+        delete actualState.cart.items[itemId][itemSize][itemColor];
+    }
+
+    $('#totalCount').html('Quantity:' + actualState.cart.totalCount);
+    $('#totalPrice').html(actualState.cart.totalPrices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]);
+    $('#cart span').html(actualState.cart.totalCount);
+    cartBox();
+}
+
+// TODO: сделать пустую корзину
 //CART BOX
 function cartBox () {
-
+    console.log(actualState.cart)
     let tmp;
-    let testt;
     let cartItems = '';
+
+    if (actualState.cart.totalCount === 0) {
+        console.log('test')
+    }
+
     Object.keys(actualState.cart.items).map(id => {
         Object.keys(actualState.cart.items[id]).map(size => {
             Object.keys(actualState.cart.items[id][size]).map(color => {
-                console.log(actualState.cart.items[id][size][color])
-                testt = size;
                 cartItems +=
                     `
                     <div class="cart-item">
@@ -276,6 +310,16 @@ function cartBox () {
                                 </div>
                             </div>
                             <div id=${"price-of-" + id + size + color} class="total-item-price">${actualState.cart.items[id][size][color].id.prices[actualState.currency] + ' ' + actualState.currencyS[actualState.currency]}</div>
+                            <div id=${"delete-" + '/' + id + '/' + size + '/' + color} class="button button-circle item-remove" onclick="deleteItemFromCart(this.id)">
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z"
+                                        fill="#EB5A1E"/>
+                                    <path
+                                        d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z"
+                                        fill="#EB5A1E"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     `
@@ -420,7 +464,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    // TODO: сделать элемент под пустую фильтрацию
     //PRODUCTS filtration, sorting and output
     function showProducts() {
         const $products = $('#products');
@@ -448,6 +491,17 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
+
+        // In case if there no products
+        if (items.length === 0) {
+            let noProducts =
+                `
+                <div style="margin: 200px auto; font-size: 3rem; font-weight: bold">Unfortunately we do not have such products</div>
+                `
+            $products.html(noProducts);
+            return false;
+        }
+        // console.log(123)
 
         function sortDy(property,order) {
             let sort_order = 1;

@@ -312,37 +312,6 @@ body {
     font-size: 12px;
 }
 
-/*PRODUCT CARD*/
-
-/*.holder {*/
-/*    display: block;*/
-/*    width: 90%;*/
-/*    height: 90%;*/
-/*    border-radius: 30px;*/
-/*    background-color: white;*/
-/*}*/
-
-/*.product-card {*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    transform: translate(-50%,-50%);*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*}*/
-/*.product-card img {*/
-/*    width: 350px;*/
-/*    height: 350px;*/
-/*    object-fit: cover;*/
-/*    margin-right: 70px;*/
-/*}*/
-/*.product-card .product-info {*/
-/*    display: flex;*/
-/*    !*flex-wrap: wrap;*!*/
-/*    flex-direction: column;*/
-/*    justify-content: space-between;*/
-/*}*/
-
 
 /*FOOTER*/
 .footer {
@@ -455,6 +424,25 @@ body {
     border: 1px solid black;
 }
 
+.button.button-circle.item-remove {
+    padding: 3px 5px;
+    border: 1px solid #d0d0d0;
+}
+.button.button-circle.item-remove:hover {
+    background-color: #d0d0d0;
+}
+.button.button-circle.item-remove:hover svg path {
+    fill: white;
+}
+.button.button-circle.item-remove:active {
+    border: 1px solid black;
+}
+.button.button-circle.item-remove svg {
+    transform: rotate(45deg);
+}
+.button.button-circle.item-remove svg path {
+    fill: #d0d0d0;
+}
 
 
 
