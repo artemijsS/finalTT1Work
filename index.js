@@ -397,7 +397,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const $currencySpan = $('#currency Span');
 
     $currencyLi.on('click', () => {
-        actualState.currency = $currencyLi.attr('id');
+        actualState.currency = $currencyLi.attr('id')[0] === 'R' ? 'RUB' : EUR;
         $currencyLi.html($currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
         $currencySpan.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
         $currencyLi.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
@@ -461,8 +461,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const sortBy = document.getElementById('sort-by');
 
     document.getElementById('rating').onclick = setSortBy;
-    document.getElementById('price (low)').onclick = setSortBy;
-    document.getElementById('price (height)').onclick = setSortBy;
+    document.getElementById('price(low)').onclick = setSortBy;
+    document.getElementById('price(height)').onclick = setSortBy;
     document.getElementById('alphabet').onclick = setSortBy;
 
     const popUpToggle = () => {
@@ -586,9 +586,9 @@ window.addEventListener('DOMContentLoaded', () => {
             items.sort(sortDy("name", "asc"));
         if (actualState.sortBy === "rating")
             items.sort(sortDy("rating", "desc"))
-        if (actualState.sortBy === "price (low)")
+        if (actualState.sortBy === "price(low)")
             items.sort(sortDyPrice(`${actualState.currency}`, "asc"))
-        if (actualState.sortBy === "price (height)")
+        if (actualState.sortBy === "price(height)")
             items.sort(sortDyPrice(`${actualState.currency}`, "desc"))
 
 
