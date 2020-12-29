@@ -269,7 +269,6 @@ function deleteItemFromCart(id) {
 
 //CART BOX
 function cartBox () {
-    console.log(actualState.cart)
     let tmp;
     let cartItems = '';
     let cartFooter;
@@ -506,7 +505,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         // console.log($search.val().length)
         if ($search.val().length < actualState.search.length) {
-            console.log($search.val());
             actualState.search = '';
             showProducts();
         }
