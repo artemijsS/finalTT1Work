@@ -1,3 +1,4 @@
+//actual state of all params
 let actualState = {
     language: "EN",
     currency: "EUR",
@@ -186,6 +187,7 @@ function productCard(id) {
     })
 }
 
+//add item count
 function addItemCount(id) {
     const item = id.split('/');
     const itemId = item[1];
@@ -207,6 +209,7 @@ function addItemCount(id) {
     $('#cart span').html(actualState.cart.totalCount);
 }
 
+//minus item count
 function minusItemCount(id) {
     const item = id.split('/');
     const itemId = item[1];
@@ -231,6 +234,7 @@ function minusItemCount(id) {
     $('#cart span').html(actualState.cart.totalCount);
 }
 
+//deleting item from cart
 function deleteItemFromCart(id) {
     const item = id.split('/');
     const itemId = item[1];
@@ -378,6 +382,8 @@ function cartBox () {
 }
 
 
+
+//MAIN PART
 window.addEventListener('DOMContentLoaded', () => {
 
 
@@ -385,6 +391,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     //HEADER
+
     // currency toggle
     const $currencyLi = $('#currency li');
     const $currencySpan = $('#currency Span');
@@ -395,14 +402,35 @@ window.addEventListener('DOMContentLoaded', () => {
         $currencySpan.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
         $currencyLi.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
 
-        console.log(actualState.currency)
         showProducts();
     })
-    // cart
+    // CART
     $('#cart').on('click', () => {
         cartBox();
     })
 
+    //MOBILE NAVIGATION
+    $('#burger').on('click', () => {
+        $('.mob-nav-box').css('display', 'block');
+    })
+    $('#closeMobNav').on('click', () => {
+        $('.mob-nav-box').css('display', 'none');
+    })
+        //mobile currency
+    const $currency2Li = $('#currency2 li');
+    const $currency2Span = $('#currency2 Span');
+
+    $currency2Li.on('click', () => {
+        actualState.currency = $currencyLi.attr('id');
+        $currency2Li.html($currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
+        $currency2Span.html($currencyLi.attr('id') === "RUB" ? "RUB" : "EUR");
+        $currency2Li.attr('id', $currencyLi.attr('id') === "RUB" ? "EUR" : "RUB");
+
+        showProducts();
+    })
+
+
+    //CONTENT
 
     //FILTERS
 

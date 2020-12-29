@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-/*TODO сделать адаптацию под планшеты и телефоны*/
+
 * {
     margin: 0;
     padding: 0;
@@ -161,7 +161,7 @@ body {
 }
 
 
-#menu {
+#burger {
     display: none;
     background-color: transparent;
     width: 35px;
@@ -183,7 +183,16 @@ body {
 }
 
 @media only screen and (max-width: 1408px) {
-    #menu {
+    .header {
+        position: fixed;
+        width: 100%;
+        border-bottom: 1px solid gray;
+        z-index: 5;
+    }
+    .banner {
+        padding-top: 110px;
+    }
+    #burger {
         display: block;
     }
     .nav .cart-menu {
@@ -222,6 +231,42 @@ body {
     }
 }
 
+.mob-nav-box {
+    position: fixed;
+    display: none;
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.7);
+}
+
+.mob-nav {
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+}
+.mob-nav .close {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    /*font-size: 25px;*/
+}
+.mob-nav .navigation ul {
+    margin: 60px auto 30px auto;
+}
+.mob-nav .navigation ul li {
+    margin-bottom: 20px;
+    margin-right: 0;
+}
+.mob-nav .navigation ul li a {
+    font-size: 16px;
+}
+.mob-nav .mob-options {
+    display: flex;
+    justify-content: space-between;
+}
 /*BANNER*/
 .banner {
     background-image: url("images/OnWebPhoto.jpg");
@@ -239,7 +284,6 @@ body {
     transform: translate(0, -50%);
     font-size: 40px;
     color: white;
-    /*margin: auto 0;*/
 }
 
 /*CONTENT*/
@@ -254,6 +298,10 @@ body {
     justify-content: space-around;
     align-items: center;
     margin: 30px 0;
+}
+
+#partner {
+    margin-right: 10px;
 }
 
 .search input[type=text] {
@@ -293,7 +341,6 @@ body {
 .sort-pop-up {
     position: absolute;
     display: none;
-    /*right: 0;*/
     margin-top: 15px;
     background: #ffffff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
@@ -319,12 +366,21 @@ body {
     color: red;
 }
 
-/*MEDIA filtration*/
-@media only screen and (max-width: 1408px) {
-
-}
-@media only screen and (max-width: 600px) {
-
+/*MEDIA filters*/
+@media only screen and (max-width: 935px) {
+    .top-filters {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .top-filters .filter {
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .top-filters .search {
+        margin-bottom: 20px;
+    }
 }
 
 .products {
@@ -376,6 +432,13 @@ body {
 }
 .product-bottom .button {
     font-size: 12px;
+}
+
+/*MEDIA products*/
+@media only screen and (max-width: 1408px) {
+    .products {
+        justify-content: space-around;
+    }
 }
 
 
